@@ -38,12 +38,12 @@ blockquote {
 /* Logo */
 .logo {
   width: 100px;
-  max-width: 30vw;
+  max-width: 100px;
+  max-height: 100px;
   height: auto;
-  margin-bottom: 1rem;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 1rem;
+  object-fit: contain;
 }
 
 /* Hero section */
@@ -74,5 +74,55 @@ blockquote {
   gap: 2rem;
   margin: 4rem 0;
   opacity: 0;
-  animation
+  animation: fadeIn 1.2s ease 0.5s forwards;
+}
+.module {
+  background: #15161c;
+  padding: 1.8rem;
+  border: 1px solid #2c2c33;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+.module:hover {
+  transform: translateY(-5px);
+}
+
+/* About section */
+.about {
+  margin: 4rem auto;
+  max-width: 720px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 0;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  border-top: 1px solid #1a1a1a;
+  margin-top: 6rem;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .cta {
+    padding: 0.7rem 1.2rem;
+  }
+}
 
