@@ -1,12 +1,11 @@
-// Manifest Reveal Trigger
 const trigger = "reclaim.signal";
-let phraseBuffer = "";
+let buffer = "";
 
 window.addEventListener("keydown", (e) => {
-  phraseBuffer += e.key;
-  if (phraseBuffer.includes(trigger)) {
+  buffer += e.key;
+  if (buffer.includes(trigger)) {
     document.getElementById("veil").classList.add("unlocked");
-    phraseBuffer = "";
+    buffer = "";
   }
-  if (phraseBuffer.length > 30) phraseBuffer = "";
+  if (buffer.length > 30) buffer = "";
 });
