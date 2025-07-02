@@ -1,6 +1,6 @@
 import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.esm.min.js";
 
-// 🎯 Vault addresses (updated with new Animals address)
+// 🎯 Vault addresses (with updated 'Animals')
 const VAULTS = {
   agent:   "0x7C73A8E89e3eD4EEfF86c6f14a16105415d000a6",
   earth:   "0xBda541D73DE68A6245D07C3d7cbC43024C04D0A9",
@@ -11,8 +11,9 @@ const VAULTS = {
 window.addEventListener("DOMContentLoaded", () => {
   const vaultButton = document.getElementById("vault-button");
   const statusBox = document.getElementById("vault-status");
+  const amountInput = document.getElementById("eth-amount"); // Input field for dynamic ETH
 
-  if (!vaultButton || !statusBox) return;
+  if (!vaultButton || !statusBox || !amountInput) return;
 
   vaultButton.addEventListener("click", async () => {
     if (!window.ethereum) {
@@ -22,9 +23,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
     try {
       const [from] = await ethereum.request({ method: "eth_requestAccounts" });
-      const amount = ethers.utils.parseEther("0.1"); // Contribution amount
-      const p30 = amount.mul(30).div(100);           // 30%
-      const p10 = amount.sub(p30.mul(3));            // Remaining 10%
+      const amountVal = parseFloat(amountInput.value || "0.1");
+
+      if (isNaN(amountVal) || amountVal <= 0) {
+        alert("Please enter a valid ETH amount.");
+        return;
+      }
+
+      const amount = ethers.utils.parseEther(amountVal.toString());
+      const p30 = amount.mul(30).div(100);
+      const p10 = amount.sub(p30.mul(3));
 
       const txs = [
         { label: "Agent",   to: VAULTS.agent,   value: p30 },
@@ -33,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { label: "Animals", to: VAULTS.animals, value: p10 }
       ];
 
-      createModal({ from, txs, statusBox });
+      createModal({ from, txs, statusBox, amount });
     } catch (err) {
       console.error("MetaMask connection failed:", err);
       alert("Could not connect wallet.");
@@ -42,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // 🧱 Modal builder
-function createModal({ from, txs, statusBox }) {
+function createModal({ from, txs, statusBox, amount }) {
   const modal = document.createElement("div");
   modal.id = "vault-modal";
   modal.style.cssText = `
@@ -55,6 +63,7 @@ function createModal({ from, txs, statusBox }) {
     <div style="background: #fff; padding: 2rem; border-radius: 10px; width: 360px; text-align: center; font-family: sans-serif;">
       <h3>Confirm Contribution</h3>
       <p><strong>Wallet:</strong><br><code>${from}</code></p>
+      <p><strong>Total:</strong> ${ethers.utils.formatEther(amount)} ETH</p>
       <ul style="text-align:left; margin: 1rem 0;">
         ${txs.map(tx => `<li>${tx.label}: ${ethers.utils.formatEther(tx.value)} ETH</li>`).join("")}
       </ul>
@@ -92,6 +101,13 @@ function createModal({ from, txs, statusBox }) {
       }
 
       statusBox.textContent = "🎉 All contributions successful.";
+
+      // 🔮 Placeholder: Invoke AI Coin minting if first-time
+      // await mintAICoin(from); ← You can hook this into Firebase or smart contract later
+
+      // 🔁 Optional: Track with Firebase
+      // logEvent(analytics, "vault_contribution", { from, amount_eth: amount.toString() });
+
     } catch (err) {
       console.error("Transaction error:", err);
       statusBox.textContent = "⚠️ Transaction failed. See console for details.";
