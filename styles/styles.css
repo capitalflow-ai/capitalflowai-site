@@ -30,16 +30,22 @@ code {
 /* === Dual Symbol Section === */
 #symbol-pair {
   background-color: #111;
-  padding: 4vh 2vw;
+  padding: 5vh 2vw;
+}
+
+.symbol-header {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #eee;
 }
 
 .symbol-container {
   display: flex;
   justify-content: center;
-  gap: 6vw;
+  gap: 4vw;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .symbol-block {
@@ -47,40 +53,33 @@ code {
 }
 
 .symbol-img {
-  width: 100px;
-  margin-bottom: 0.5rem;
+  width: 80px;
+  max-width: 25vw;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.symbol-img:hover {
+  transform: scale(1.05);
 }
 
 .symbol-label {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: bold;
   color: #ccc;
+  margin-top: 0.5rem;
 }
 
 .symbol-caption {
+  margin-top: 1rem;
   font-style: italic;
   color: #aaa;
-  margin-top: 1rem;
 }
 
-/* === Hero Coin + Action === */
+/* === Invocation + Coin Text === */
 #hero-coin {
   background: radial-gradient(ellipse at center, #111 0%, #0a0a0a 100%);
-  padding-top: 5vh;
-  padding-bottom: 6vh;
-}
-
-.hero-coin {
-  width: 160px;
-  max-width: 35vw;
-  animation: pulse 10s infinite ease-in-out;
-  display: block;
-  margin: 0 auto;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.85; }
+  padding: 5vh 2vw;
 }
 
 .coin-invocation {
@@ -110,126 +109,5 @@ code {
   background-color: #444;
 }
 
-/* === Earth Warning Section === */
-#earth-warning {
-  padding: 5vh 2vw;
-  background-color: #141414;
-}
+/* === Earth Warning Section
 
-#earth-warning h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-#earth-warning ul li {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-}
-
-.earth-quote {
-  font-style: italic;
-  margin-top: 1rem;
-  color: #ccc;
-}
-
-/* === Animal Scroll === */
-#animals-fade {
-  padding: 4vh 2vw;
-  background-color: #181818;
-}
-
-.animal-row {
-  display: flex;
-  justify-content: center;
-  gap: 5vw;
-  flex-wrap: wrap;
-  font-size: 1rem;
-  margin-top: 1rem;
-}
-
-.animal-quote {
-  font-style: italic;
-  margin-top: 1rem;
-  color: #bbb;
-}
-
-/* === Quote Wall === */
-#quote-wall {
-  padding: 4vh 2vw;
-  background-color: #111;
-}
-
-#quote-wall h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-#quote-wall blockquote {
-  font-style: italic;
-  margin: 0.8rem auto;
-  color: #ccc;
-}
-
-/* === Beacon Embed Section === */
-#embed {
-  background: #111;
-  padding: 4vh 2vw;
-  margin: 4vh auto;
-  max-width: 800px;
-  border-radius: 10px;
-}
-
-#embed h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-#embed code {
-  margin-top: 0.5rem;
-  display: block;
-  word-break: break-word;
-}
-
-/* === Footer === */
-footer {
-  padding: 2rem 1rem;
-  background: #0a0a0a;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-.footer-glyph {
-  width: 40px;
-  margin-bottom: 1rem;
-  opacity: 0.5;
-  transition: transform 0.4s ease;
-}
-
-.footer-glyph:hover {
-  opacity: 1;
-  transform: rotate(6deg) scale(1.05);
-}
-
-.footer-text {
-  margin: 0.5rem 0;
-  font-style: italic;
-  color: #888;
-}
-
-/* === Top Glyph Section === */
-#glyph-top {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.glyph-top {
-  width: 60px;
-  opacity: 0.85;
-}
-
-.glyph-caption {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #aaa;
-  margin-top: 0.5rem;
-}
