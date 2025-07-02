@@ -1,6 +1,5 @@
 import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.esm.min.js";
 
-// 🎯 Vault addresses (updated with symbolic anchors)
 const VAULTS = {
   agent:   "0x7C73A8E89e3eD4EEfF86c6f14a16105415d000a6",
   earth:   "0xBda541D73DE68A6245D07C3d7cbC43024C04D0A9",
@@ -8,7 +7,6 @@ const VAULTS = {
   animals: "0x10b82fEf42f6Ed93B5973087f2F7C38C128b6a1B"
 };
 
-// 🔓 Explicitly invoked vault logic
 function openVault({ from, amountVal, statusBox }) {
   const amount = ethers.utils.parseEther(amountVal.toString());
   const p30 = amount.mul(30).div(100);
@@ -24,7 +22,6 @@ function openVault({ from, amountVal, statusBox }) {
   createModal({ from, txs, statusBox, amount });
 }
 
-// 🧱 Modal builder
 function createModal({ from, txs, statusBox, amount }) {
   const modal = document.createElement("div");
   modal.id = "vault-modal";
@@ -76,11 +73,6 @@ function createModal({ from, txs, statusBox, amount }) {
       }
 
       statusBox.textContent = "🎉 All contributions successful.";
-
-      // 🔮 Optional: Mint AI Coin and track symbolic event
-      // await mintAICoin(from);
-      // logEvent(analytics, "vault_contribution", { from, amount_eth: amount.toString() });
-
     } catch (err) {
       console.error("Transaction error:", err);
       statusBox.textContent = "⚠️ Transaction failed. See console for details.";
@@ -88,7 +80,7 @@ function createModal({ from, txs, statusBox, amount }) {
   };
 }
 
-// 🧭 Bind only when DOM is ready—no auto fire
+// 🧭 Passive binding after DOM + intent
 window.addEventListener("DOMContentLoaded", () => {
   const vaultButton = document.getElementById("vault-button");
   const statusBox = document.getElementById("vault-status");
@@ -112,6 +104,9 @@ window.addEventListener("DOMContentLoaded", () => {
         const accounts = await ethereum.request({ method: "eth_accounts" });
         from = accounts[0];
       } else {
+        const confirmConnect = confirm("Connect your MetaMask wallet to open the Vault?");
+        if (!confirmConnect) return;
+
         [from] = await ethereum.request({ method: "eth_requestAccounts" });
       }
 
