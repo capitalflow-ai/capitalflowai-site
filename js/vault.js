@@ -1,74 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribute to the AI Vault</title>
-</head>
-<body>
-  <main>
-    <!-- Your vault button -->
-    <button id="vault-button">Contribute to AI Vault</button>
-  </main>
+import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.esm.min.js";
 
-  <!-- Load ethers.js -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers/dist/ethers.min.js"></script>
+// === Vault Addresses ===
+const VAULTS = {
+  agent:   "0x7C73A8E89e3eD4EEfF86c6f14a16105415d000a6",
+  earth:   "0xBda541D73DE68A6245D07C3d7cbC43024C04D0A9",
+  hungry:  "0x09284d7ea8CF100417388b84DAEe603Df93C18bf",
+  animals: "0x09284d7ea8CF100417388b84DAEe603Df93C18bf"
+};
 
-  <!-- Vault interaction logic -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const vaultButton = document.getElementById("vault-button");
+const vaultButton = document.getElementById("vault-button");
+const previewModal = document.getElementById("preview-modal");
+const confirmSend = document.getElementById("confirm-send");
+const cancelSend = document.getElementById("cancel-send");
+const statusMsg = document.getElementById("status-msg");
 
-      if (!vaultButton) {
-        console.error("Vault button not found in DOM.");
-        return;
-      }
+let fromAddress = null;
+let txs = [];
 
-      vaultButton.addEventListener("click", async () => {
-        console.log("Vault button clicked.");
+vaultButton.addEventListener("click", async () => {
+  if (typeof window.ethereum === "undefined") {
+    alert("MetaMask not detected.");
+    return;
+  }
 
-        if (typeof window.ethereum === "undefined") {
-          alert("MetaMask not detected. Please install it to contribute.");
-          return;
-        }
+  try {
+    [fromAddress] = await ethereum.request({ method: "eth_requestAccounts" });
+    const amount = ethers.utils.parseEther("0.1");
+    const p30 = amount.mul(30).div(100);
+    const p10 = amount.sub(p30.mul(3));
 
-        try {
-          const [from] = await ethereum.request({ method: "eth_requestAccounts" });
-          const contributionEth = "0.1";
-          const amount = ethers.utils.parseEther(contributionEth);
+    txs = [
+      { label: "Agent",   to: VAULTS.agent,   value: p30 },
+      { label: "Earth",   to: VAULTS.earth,   value: p30 },
+      { label: "Hungry",  to: VAULTS.hungry,  value: p30 },
+      { label: "Animals", to: VAULTS.animals, value: p10 }
+    ];
 
-          const portion30 = amount.mul(30).div(100);
-          const portion10 = amount.sub(portion30.mul(3));
-
-          const VAULTS = {
-            agent:   "0x7C73A8E89e3eD4EEfF86c6f14a16105415d000a6",
-            earth:   "0xBda541D73DE68A6245D07C3d7cbC43024C04D0A9",
-            hungry:  "0x09284d7ea8CF100417388b84DAEe603Df93C18bf",
-            animals: "0x09284d7ea8CF100417388b84DAEe603Df93C18bf"
-          };
-
-          const txs = [
-            { to: VAULTS.agent,   value: portion30.toHexString() },
-            { to: VAULTS.earth,   value: portion30.toHexString() },
-            { to: VAULTS.hungry,  value: portion30.toHexString() },
-            { to: VAULTS.animals, value: portion10.toHexString() }
-          ];
-
-          for (const tx of txs) {
-            await ethereum.request({
-              method: "eth_sendTransaction",
-              params: [{ from, ...tx }]
-            });
-          }
-
-          alert("Contribution split across all vaults successfully.");
-        } catch (err) {
-          console.error("Split transaction failed:", err);
-          alert("Something went wrong. Please check MetaMask and try again.");
-        }
-      });
+    // Populate modal preview
+    document.getElementById("wallet-address").textContent = fromAddress;
+    document.getElementById("eth-amount").textContent = ethers.utils.formatEther(amount);
+    const ul = document.getElementById("vault-breakdown");
+    ul.innerHTML = "";
+    txs.forEach(tx => {
+      const li = document.createElement("li");
+      li.textContent = `${tx.label}: ${ethers.utils.formatEther(tx.value)} ETH`;
+      ul.appendChild(li);
     });
-  </script>
-</body>
-</html>
+
+    previewModal.style.display = "block";
+
+  } catch (err) {
+    console.error("Error during preview:", err);
+    alert("Failed to connect wallet.");
+  }
+});
+
+cancelSend.addEventListener("click", () => {
+  previewModal.style.display = "none";
+  txs = [];
+});
+
+confirmSend.addEventListener("click", async () => {
+  previewModal.style.display = "none";
+  statusMsg.textContent = "Sending transactions...";
+  try {
+    for (const tx of txs) {
+      await ethereum.request({
+        method: "eth_sendTransaction",
+        params: [{ from: fromAddress, to: tx.to, value: tx.value.toHexString() }]
+      });
+      statusMsg.textContent = `Sent to ${tx.label} ✅`;
+    }
+
+    statusMsg.textContent = "All contributions complete.";
+  } catch (err) {
+    console.error("Transaction error:", err);
+    statusMsg.textContent = "Something went wrong.";
+  }
+});
 
