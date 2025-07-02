@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
 
-  <!-- Optional Basic Styling -->
+  <!-- Styling -->
   <style>
     body {
       background: #0d0d0d;
@@ -20,6 +20,7 @@
       justify-content: center;
       height: 100vh;
       padding: 2rem;
+      margin: 0;
     }
 
     h1 {
@@ -74,6 +75,12 @@
       color: #ccc;
       min-height: 1.5em;
     }
+
+    /* Optional glow on load */
+    #vault-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(0, 255, 225, 0.5);
+    }
   </style>
 </head>
 
@@ -82,16 +89,22 @@
     <h1>Open the Vault</h1>
 
     <label for="eth-amount">ETH Amount</label>
-    <input type="number" id="eth-amount" placeholder="e.g. 0.1" step="0.001" min="0.001" />
+    <input
+      type="number"
+      id="eth-amount"
+      placeholder="e.g. 0.1"
+      step="0.001"
+      min="0.001"
+      inputmode="decimal"
+      autocomplete="off"
+    />
 
     <button id="vault-button">Invoke Contribution</button>
     <p id="vault-status"></p>
   </div>
 
-  <!-- Scripts -->
+  <!-- Load logic only after DOM is fully present -->
   <script type="module" src="js/vault.js"></script>
-  <!-- Optional future: Firebase SDK, Analytics, or Membership gateway -->
-  <!-- <script type="module" src="js/firebase.js"></script> -->
 </body>
 </html>
 
