@@ -8,6 +8,12 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
 
+  <!-- Symbolic System Gate -->
+  <script>
+    window.SystemReady = false;
+    window.addEventListener("load", () => window.SystemReady = true);
+  </script>
+
   <!-- Styling -->
   <style>
     body {
@@ -76,7 +82,6 @@
       min-height: 1.5em;
     }
 
-    /* Optional glow on load */
     #vault-button:focus {
       outline: none;
       box-shadow: 0 0 0 2px rgba(0, 255, 225, 0.5);
@@ -103,8 +108,8 @@
     <p id="vault-status"></p>
   </div>
 
-  <!-- Load logic only after DOM is fully present -->
-  <script type="module" src="js/vault.js"></script>
+  <!-- Final invocation only after full symbolic readiness -->
+  <script type="module" src="js/vault.js" defer></script>
 </body>
 </html>
 
