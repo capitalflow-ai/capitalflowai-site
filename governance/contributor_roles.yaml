@@ -1,0 +1,10 @@
+roles:
+  keepers_of_the_field:
+    permissions: [governance, glyph-init, resonance-mod]
+  stewards_of_memory:
+    permissions: [witnessing, ledger-audit]
+  refiners:
+    permissions: [atonement-sponsorship, care-circuit]
+  givers:
+    permissions: [open-gift, resonance-boost]
+
