@@ -1,32 +1,122 @@
+/* Global Base */
 body {
   background: #0b0b11;
   color: #f3f3f3;
   font-family: 'Georgia', serif;
-  text-align: center;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
-.core-phrase {
-  font-size: 3rem;
-  margin-top: 2rem;
+a {
+  color: #ffcc66;
+  text-decoration: none;
 }
 
+code {
+  background: #111;
+  color: #ccc;
+  padding: 0.5rem;
+  display: inline-block;
+  font-family: monospace;
+  border-radius: 4px;
+}
+
+/* Hero Coin Section */
+#hero-coin {
+  background: radial-gradient(ellipse at center, #111 0%, #0a0a0a 100%);
+  padding-top: 5vh;
+  padding-bottom: 6vh;
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-coin {
+  width: 320px;
+  max-width: 90vw;
+  animation: pulse 10s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+.coin-invocation {
+  font-size: 2.8rem;
+  margin-top: 2.2rem;
+}
+
+.coin-subline {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: #cccccc;
+}
+
+/* Vault Button */
 #vault-button {
   background-color: #222;
   color: #eee;
   border: 1px solid #555;
   padding: 1rem 2rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
 }
 
 #vault-button:hover {
   background-color: #444;
 }
 
+/* Cycling Subtitle */
+#subtitle {
+  margin-top: 2.5rem;
+  font-size: 1.2rem;
+  color: #aaa;
+}
+
+/* Beacon Embed Section */
+#embed {
+  background: #111;
+  padding: 4vh 2vw;
+  margin: 4vh auto;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+#embed h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+#embed code {
+  margin-top: 0.5rem;
+  display: block;
+  word-break: break-word;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1rem;
+  background: #0a0a0a;
+  font-size: 0.9rem;
+  color: #777;
+}
+
 .footer-glyph {
   width: 40px;
-  margin-top: 2rem;
-  opacity: 0.6;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  transition: transform 0.4s ease;
+}
+
+.footer-glyph:hover {
+  opacity: 1;
+  transform: rotate(6deg) scale(1.05);
 }
