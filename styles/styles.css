@@ -1,7 +1,7 @@
 /* === Base Reset & Typography === */
 body {
-  background: #e8e8e8;
-  color: #1a1a1a;
+  background: #e00000;
+  color: #ffffff;
   font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #663300;
+  color: #ffe0e0;
   text-decoration: none;
 }
 
@@ -19,24 +19,24 @@ ul {
 }
 
 code {
-  background: #f2f2f2;
-  color: #333;
+  background: #990000;
+  color: #fff;
   padding: 0.5rem;
   display: inline-block;
   font-family: monospace;
   border-radius: 4px;
 }
 
-/* === Dual Symbol Section === */
+/* === Symbol Pair === */
 #symbol-pair {
-  background-color: #f4f4f4;
+  background-color: #cc0000;
   padding: 5vh 2vw;
 }
 
 .symbol-header {
   font-size: 1.6rem;
   margin-bottom: 1rem;
-  color: #222;
+  color: #fff;
 }
 
 .symbol-container {
@@ -66,76 +66,108 @@ code {
 .symbol-label {
   font-size: 0.95rem;
   font-weight: bold;
-  color: #444;
+  color: #f7f7f7;
   margin-top: 0.5rem;
 }
 
 .symbol-caption {
   margin-top: 1rem;
   font-style: italic;
-  color: #666;
+  color: #eee;
 }
 
-/* === Beacon Invocation Section === */
-#hero-coin {
-  background: #f0f0f0;
+/* === Mission Section === */
+#mission {
+  background-color: #d60000;
+  padding: 4vh 2vw;
+}
+
+#mission h2 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.mission-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === What We Do Section === */
+#what-we-do {
+  background-color: #c40000;
   padding: 5vh 2vw;
 }
 
-.coin-invocation {
-  font-size: 2.4rem;
-  margin-top: 1.5rem;
+#what-we-do h2 {
+  font-size: 1.7rem;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
-.coin-subline {
+#what-we-do ul li {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.purpose-quote {
   font-style: italic;
-  font-size: 1rem;
-  margin-top: 0.4rem;
-  color: #444;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+/* === Vault Call (Relocated Button) === */
+#vault-call {
+  background-color: #b00000;
+  padding: 3vh 2vw;
 }
 
 #vault-button {
-  background-color: #333;
-  color: #f2f2f2;
-  border: 1px solid #555;
+  background-color: #ffdddd;
+  color: #900;
+  border: none;
   padding: 1rem 2rem;
-  margin-top: 1.2rem;
-  cursor: pointer;
   font-size: 1rem;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
 #vault-button:hover {
-  background-color: #555;
+  background-color: #fff;
+  color: #700;
 }
 
 /* === Earth Warning Section === */
 #earth-warning {
-  background-color: #fafafa;
+  background-color: #990000;
   padding: 5vh 2vw;
 }
 
 #earth-warning h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #222;
+  color: #fff;
 }
 
 #earth-warning ul li {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #f9f9f9;
 }
 
 .earth-quote {
   font-style: italic;
   margin-top: 1rem;
-  color: #555;
+  color: #f0f0f0;
 }
 
 /* === Animal Scroll Section === */
 #animals-fade {
-  background-color: #fdfdfd;
+  background-color: #b30000;
   padding: 4vh 2vw;
 }
 
@@ -146,17 +178,66 @@ code {
   flex-wrap: wrap;
   font-size: 1rem;
   margin-top: 1rem;
-  color: #444;
+  color: #fff;
 }
 
 .animal-quote {
   font-style: italic;
   margin-top: 1rem;
-  color: #666;
+  color: #eee;
 }
 
 /* === Quote Wall Section === */
 #quote-wall {
-  background-color: #f6f6f6;
-  padding
+  background-color: #a00000;
+  padding: 4vh 2vw;
+}
+
+#quote-wall h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+#quote-wall blockquote {
+  font-style: italic;
+  margin: 0.8rem auto;
+  color: #f5f5f5;
+}
+
+/* === Beacon Embed Section === */
+#embed {
+  background-color: #880000;
+  padding: 4vh 2vw;
+  margin: 4vh auto;
+  max-width: 800px;
+  border-radius: 10px;
+}
+
+#embed h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+#embed code {
+  margin-top: 0.5rem;
+  display: block;
+  word-break: break-word;
+  color: #fff;
+}
+
+/* === Footer Section === */
+footer {
+  background-color: #700000;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+.footer-text {
+  margin: 0.5rem 0;
+  font-style: italic;
+  color: #ddd;
+}
 
