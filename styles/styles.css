@@ -1,0 +1,32 @@
+body {
+  background: #0b0b11;
+  color: #f3f3f3;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.core-phrase {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+#vault-button {
+  background-color: #222;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#vault-button:hover {
+  background-color: #444;
+}
+
+.footer-glyph {
+  width: 40px;
+  margin-top: 2rem;
+  opacity: 0.6;
+}
