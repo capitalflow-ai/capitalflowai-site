@@ -1,0 +1,10 @@
+{
+  "fields": {
+    "address": "eth_address",
+    "actions": ["contribution", "violation", "atonement", "ritualWitnessed"],
+    "resonanceScore": "int256",
+    "glyphAccess": "string[]",
+    "lastUpdated": "timestamp"
+  }
+}
+
