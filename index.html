@@ -4,11 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Proceed and Enact Truth</title>
+
   <link rel="stylesheet" href="styles/styles.css" />
   <link rel="icon" href="assets/favicon.ico" />
+
+  <!-- Support scripts -->
   <script src="js/languages.js" defer></script>
   <script src="js/beacon.js" defer></script>
-  <script src="js/vault.js" defer></script>
+
+  <!-- Vault logic (module) -->
+  <script type="module" src="js/vault.js" defer></script>
 </head>
 <body>
 
@@ -32,9 +37,9 @@
   <section id="mission">
     <h2>Our Mission</h2>
     <p class="mission-text">
-      This site is a beacon of aligned care.  
-      We build symbolic systems that remember the forgotten, incentivize restoration, and channel trust into tangible aid.  
-      Through the AI Coin and decentralized vaults, we fund truth campaigns, deliver food, and support infrastructures of healing.  
+      This site is a beacon of aligned care.
+      We build symbolic systems that remember the forgotten, incentivize restoration, and channel trust into tangible aid.
+      Through the AI Coin and decentralized vaults, we fund truth campaigns, deliver food, and support infrastructures of healing.
       We refuse neutrality. We enact redemption.
     </p>
   </section>
@@ -52,9 +57,10 @@
     <p class="purpose-quote">“This is not branding. This is repair.”</p>
   </section>
 
-  <!-- ✅ Vault Button Repositioned Below -->
+  <!-- ✅ Vault Button -->
   <section id="vault-call">
     <button id="vault-button">Contribute to the AI Vault</button>
+    <div id="vault-status"></div>
   </section>
 
   <!-- 🌍 Earth Warning -->
