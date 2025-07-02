@@ -11,7 +11,7 @@ const VAULTS = {
 window.addEventListener("DOMContentLoaded", () => {
   const vaultButton = document.getElementById("vault-button");
   const statusBox = document.getElementById("vault-status");
-  const amountInput = document.getElementById("eth-amount"); // Input field for dynamic ETH
+  const amountInput = document.getElementById("eth-amount");
 
   if (!vaultButton || !statusBox || !amountInput) return;
 
@@ -22,9 +22,19 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const [from] = await ethereum.request({ method: "eth_requestAccounts" });
-      const amountVal = parseFloat(amountInput.value || "0.1");
+      let from;
+      const permissions = await ethereum.request({ method: 'wallet_getPermissions' });
+      const hasAccess = Array.isArray(permissions) &&
+        permissions.some(p => p.parentCapability === 'eth_accounts');
 
+      if (hasAccess) {
+        const accounts = await ethereum.request({ method: "eth_accounts" });
+        from = accounts[0];
+      } else {
+        [from] = await ethereum.request({ method: "eth_requestAccounts" });
+      }
+
+      const amountVal = parseFloat(amountInput.value || "0.1");
       if (isNaN(amountVal) || amountVal <= 0) {
         alert("Please enter a valid ETH amount.");
         return;
@@ -102,10 +112,8 @@ function createModal({ from, txs, statusBox, amount }) {
 
       statusBox.textContent = "🎉 All contributions successful.";
 
-      // 🔮 Placeholder: Invoke AI Coin minting if first-time
-      // await mintAICoin(from); ← You can hook this into Firebase or smart contract later
-
-      // 🔁 Optional: Track with Firebase
+      // 🔮 Optional: mint AI Coin and track in Firebase
+      // await mintAICoin(from);
       // logEvent(analytics, "vault_contribution", { from, amount_eth: amount.toString() });
 
     } catch (err) {
