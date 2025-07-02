@@ -1,7 +1,7 @@
 /* === Base Reset & Typography === */
 body {
-  background: #0b0b11;
-  color: #f3f3f3;
+  background: #e8e8e8;
+  color: #1a1a1a;
   font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #ffcc66;
+  color: #663300;
   text-decoration: none;
 }
 
@@ -19,8 +19,8 @@ ul {
 }
 
 code {
-  background: #111;
-  color: #ccc;
+  background: #f2f2f2;
+  color: #333;
   padding: 0.5rem;
   display: inline-block;
   font-family: monospace;
@@ -29,14 +29,14 @@ code {
 
 /* === Dual Symbol Section === */
 #symbol-pair {
-  background-color: #111;
+  background-color: #f4f4f4;
   padding: 5vh 2vw;
 }
 
 .symbol-header {
   font-size: 1.6rem;
   margin-bottom: 1rem;
-  color: #eee;
+  color: #222;
 }
 
 .symbol-container {
@@ -55,7 +55,7 @@ code {
 .symbol-img {
   width: 80px;
   max-width: 25vw;
-  opacity: 0.9;
+  opacity: 0.95;
   transition: transform 0.3s ease;
 }
 
@@ -66,19 +66,19 @@ code {
 .symbol-label {
   font-size: 0.95rem;
   font-weight: bold;
-  color: #ccc;
+  color: #444;
   margin-top: 0.5rem;
 }
 
 .symbol-caption {
   margin-top: 1rem;
   font-style: italic;
-  color: #aaa;
+  color: #666;
 }
 
-/* === Invocation + Coin Text === */
+/* === Beacon Invocation Section === */
 #hero-coin {
-  background: radial-gradient(ellipse at center, #111 0%, #0a0a0a 100%);
+  background: #f0f0f0;
   padding: 5vh 2vw;
 }
 
@@ -91,12 +91,12 @@ code {
   font-style: italic;
   font-size: 1rem;
   margin-top: 0.4rem;
-  color: #cccccc;
+  color: #444;
 }
 
 #vault-button {
-  background-color: #222;
-  color: #eee;
+  background-color: #333;
+  color: #f2f2f2;
   border: 1px solid #555;
   padding: 1rem 2rem;
   margin-top: 1.2rem;
@@ -106,8 +106,57 @@ code {
 }
 
 #vault-button:hover {
-  background-color: #444;
+  background-color: #555;
 }
 
-/* === Earth Warning Section
+/* === Earth Warning Section === */
+#earth-warning {
+  background-color: #fafafa;
+  padding: 5vh 2vw;
+}
+
+#earth-warning h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+#earth-warning ul li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.earth-quote {
+  font-style: italic;
+  margin-top: 1rem;
+  color: #555;
+}
+
+/* === Animal Scroll Section === */
+#animals-fade {
+  background-color: #fdfdfd;
+  padding: 4vh 2vw;
+}
+
+.animal-row {
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: #444;
+}
+
+.animal-quote {
+  font-style: italic;
+  margin-top: 1rem;
+  color: #666;
+}
+
+/* === Quote Wall Section === */
+#quote-wall {
+  background-color: #f6f6f6;
+  padding
 
