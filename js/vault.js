@@ -8,6 +8,13 @@ const VAULTS = {
 };
 
 function openVault({ from, amountVal, statusBox }) {
+  console.trace("🔥 openVault was called");
+
+  if (!window.SystemReady || !window.manualUserClick) {
+    console.warn("🔒 Vault blocked: invocation not intentional or system not ready.");
+    return;
+  }
+
   const amount = ethers.utils.parseEther(amountVal.toString());
   const p30 = amount.mul(30).div(100);
   const p10 = amount.sub(p30.mul(3));
@@ -23,6 +30,8 @@ function openVault({ from, amountVal, statusBox }) {
 }
 
 function createModal({ from, txs, statusBox, amount }) {
+  console.trace("🧊 createModal invoked");
+
   const modal = document.createElement("div");
   modal.id = "vault-modal";
   modal.style.cssText = `
@@ -80,7 +89,6 @@ function createModal({ from, txs, statusBox, amount }) {
   };
 }
 
-// 🧭 Passive binding after DOM + intent
 window.addEventListener("DOMContentLoaded", () => {
   const vaultButton = document.getElementById("vault-button");
   const statusBox = document.getElementById("vault-status");
@@ -89,6 +97,14 @@ window.addEventListener("DOMContentLoaded", () => {
   if (!vaultButton || !statusBox || !amountInput) return;
 
   vaultButton.addEventListener("click", async () => {
+    console.log("🧠 Vault button clicked manually.");
+    window.manualUserClick = true;
+
+    if (!window.SystemReady) {
+      alert("System is still initializing. Please wait.");
+      return;
+    }
+
     if (!window.ethereum) {
       alert("MetaMask is not installed.");
       return;
@@ -123,4 +139,3 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
