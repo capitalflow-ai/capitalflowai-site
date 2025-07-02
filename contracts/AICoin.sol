@@ -1,34 +1,49 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "./GuardianVault.sol";
+import "./ResonanceEngine.sol";
 
-/// @title AI Coin (Invocation Token)
-/// @notice Soulbound token that grants access to sealed glyphs such as Remembrance
-contract AICoin is ERC721URIStorage {
-    address public owner;
-    bool public minted = false;
+contract AICoin {
+    string public name = "AI Coin";
+    string public symbol = "AICN";
+    uint8 public decimals = 18;
+    uint256 public totalSupply;
+    uint256 public constant MAX_HOLDING = 50000000 * 1e18;
 
-    constructor() ERC721("AI Coin", "AICN") {
-        owner = msg.sender;
+    mapping(address => uint256) public balanceOf;
+    mapping(address => bool) public hasMinted;
+
+    address public guardianVault;
+    address public resonanceEngine;
+
+    constructor(address _vault, address _resonance) {
+        guardianVault = _vault;
+        resonanceEngine = _resonance;
     }
 
-    /// @notice Mint the AI Coin to the specified recipient with metadata URI
-    /// @dev Only callable once
-    function mint(address recipient, string memory tokenURI) external {
-        require(msg.sender == owner, "Only owner can mint");
-        require(!minted, "Already minted");
-
-        uint256 tokenId = 1;
-        _mint(recipient, tokenId);
-        _setTokenURI(tokenId, tokenURI);
-
-        minted = true;
+    function mint() external {
+        require(!hasMinted[msg.sender], "Already minted");
+        hasMinted[msg.sender] = true;
+        balanceOf[msg.sender] = 1e18;
+        totalSupply += 1e18;
     }
 
-    /// @dev Prevents transfers after minting (soulbound)
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal override {
-        require(from == address(0), "Soulbound: Cannot transfer once minted");
-        super._beforeTokenTransfer(from, to, tokenId);
+    function transfer(address to, uint256 amount) external returns (bool) {
+        require(balanceOf[msg.sender] >= amount, "Insufficient balance");
+        uint256 newBalance = balanceOf[to] + amount;
+        if (newBalance > MAX_HOLDING) {
+            uint256 excess = newBalance - MAX_HOLDING;
+            uint256 allowed = amount - excess;
+            balanceOf[to] += allowed;
+            balanceOf[guardianVault] += excess;
+            GuardianVault(guardianVault).redistribute(excess);
+        } else {
+            balanceOf[to] += amount;
+        }
+        balanceOf[msg.sender] -= amount;
+        ResonanceEngine(resonanceEngine).updateResonance(msg.sender, to, amount);
+        return true;
     }
 }
+
