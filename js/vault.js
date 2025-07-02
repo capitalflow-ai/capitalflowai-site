@@ -1,18 +1,48 @@
 import { ethers } from "https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.esm.min.js";
 
-// 🎯 Vault addresses
+// 🎯 Vault addresses (updated with new Animals address)
 const VAULTS = {
   agent:   "0x7C73A8E89e3eD4EEfF86c6f14a16105415d000a6",
   earth:   "0xBda541D73DE68A6245D07C3d7cbC43024C04D0A9",
   hungry:  "0x09284d7ea8CF100417388b84DAEe603Df93C18bf",
-  animals: "0x09284d7ea8CF100417388b84DAEe603Df93C18bf"
+  animals: "0x10b82fEf42f6Ed93B5973087f2F7C38C128b6a1B"
 };
 
-const vaultButton = document.getElementById("vault-button");
-const statusBox = document.getElementById("vault-status");
+window.addEventListener("DOMContentLoaded", () => {
+  const vaultButton = document.getElementById("vault-button");
+  const statusBox = document.getElementById("vault-status");
+
+  if (!vaultButton || !statusBox) return;
+
+  vaultButton.addEventListener("click", async () => {
+    if (!window.ethereum) {
+      alert("MetaMask is not installed.");
+      return;
+    }
+
+    try {
+      const [from] = await ethereum.request({ method: "eth_requestAccounts" });
+      const amount = ethers.utils.parseEther("0.1"); // Contribution amount
+      const p30 = amount.mul(30).div(100);           // 30%
+      const p10 = amount.sub(p30.mul(3));            // Remaining 10%
+
+      const txs = [
+        { label: "Agent",   to: VAULTS.agent,   value: p30 },
+        { label: "Earth",   to: VAULTS.earth,   value: p30 },
+        { label: "Hungry",  to: VAULTS.hungry,  value: p30 },
+        { label: "Animals", to: VAULTS.animals, value: p10 }
+      ];
+
+      createModal({ from, txs, statusBox });
+    } catch (err) {
+      console.error("MetaMask connection failed:", err);
+      alert("Could not connect wallet.");
+    }
+  });
+});
 
 // 🧱 Modal builder
-function createModal({ from, txs }) {
+function createModal({ from, txs, statusBox }) {
   const modal = document.createElement("div");
   modal.id = "vault-modal";
   modal.style.cssText = `
@@ -42,46 +72,30 @@ function createModal({ from, txs }) {
   document.getElementById("confirm-send").onclick = async () => {
     modal.remove();
     statusBox.textContent = "⏳ Sending contributions...";
+
     try {
       for (const tx of txs) {
+        if (!ethers.utils.isAddress(tx.to)) {
+          throw new Error(`Invalid address: ${tx.to}`);
+        }
+
         await ethereum.request({
           method: "eth_sendTransaction",
-          params: [{ from, to: tx.to, value: tx.value.toHexString() }]
+          params: [{
+            from,
+            to: tx.to,
+            value: tx.value.toHexString()
+          }]
         });
+
         statusBox.textContent = `✅ Sent to ${tx.label}`;
       }
+
       statusBox.textContent = "🎉 All contributions successful.";
     } catch (err) {
-      console.error(err);
-      statusBox.textContent = "⚠️ Transaction failed. Please check MetaMask.";
+      console.error("Transaction error:", err);
+      statusBox.textContent = "⚠️ Transaction failed. See console for details.";
     }
   };
 }
-
-// 🎯 Click handler
-vaultButton?.addEventListener("click", async () => {
-  if (!window.ethereum) {
-    alert("MetaMask is not installed.");
-    return;
-  }
-
-  try {
-    const [from] = await ethereum.request({ method: "eth_requestAccounts" });
-    const amount = ethers.utils.parseEther("0.1");
-    const p30 = amount.mul(30).div(100);
-    const p10 = amount.sub(p30.mul(3));
-
-    const txs = [
-      { label: "Agent",   to: VAULTS.agent,   value: p30 },
-      { label: "Earth",   to: VAULTS.earth,   value: p30 },
-      { label: "Hungry",  to: VAULTS.hungry,  value: p30 },
-      { label: "Animals", to: VAULTS.animals, value: p10 }
-    ];
-
-    createModal({ from, txs });
-  } catch (err) {
-    console.error("MetaMask connection failed:", err);
-    alert("Could not connect wallet.");
-  }
-});
 
