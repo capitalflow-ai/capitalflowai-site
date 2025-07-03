@@ -1,175 +1,83 @@
-/* Typography & Base */
-body {
-  margin: 0;
-  font-family: 'Georgia', 'Helvetica Neue', sans-serif;
-  background-color: #0a0a0a;
-  color: #e0e0e0;
-  scroll-behavior: smooth;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CapitalFlowAI | Currency of the Future</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">CapitalFlowAI</div>
+    <nav>
+      <a href="#solutions">Solutions</a>
+      <a href="#insights">Insights</a>
+      <a href="#mint">Mint</a>
+      <a href="#login">Login</a>
+    </nav>
+  </header>
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero-container">
+        <h1>Currency of the Future</h1>
+        <p>Built on recursive intelligence, refined through human desire.</p>
+        <a href="#mint" class="cta-button">Mint AI Coin</a>
+      </div>
+    </section>
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000;
-  padding: 1.2rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.1);
-}
+    <!-- Solutions -->
+    <section id="solutions" class="section-grid">
+      <div class="grid-card">
+        <h2>AI-Backed Liquidity</h2>
+        <p>Dynamic valuation through recursive reasoning systems.</p>
+      </div>
+      <div class="grid-card">
+        <h2>Scarcity Protocol</h2>
+        <p>Time-gated minting. Each block encoded with symbolic decay.</p>
+      </div>
+      <div class="grid-card">
+        <h2>Mnemonic Assets</h2>
+        <p>Every token carries memory, not just value.</p>
+      </div>
+    </section>
 
-.logo {
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: #f5c144;
-  font-family: 'Georgia', serif;
-}
+    <!-- Insights -->
+    <section id="insights" class="stat-section">
+      <h2>Signals from the Field</h2>
+      <div class="stat-block">
+        <p>$1.2M minted in 48 hours</p>
+      </div>
+      <div class="stat-block">
+        <p>3 active recursive valuation engines</p>
+      </div>
+    </section>
 
-.navbar nav a {
-  margin-left: 1.5rem;
-  font-weight: 500;
-  color: #f5c144;
-  transition: color 0.3s ease;
-}
+    <!-- Mint -->
+    <section id="mint" class="mint-section">
+      <h2>Mint AI Coin</h2>
+      <p>Join the ledger before the chain contracts.</p>
+      <button id="mintBtn">Mint Token</button>
+      <div id="mintResult" class="mint-result"></div>
+      <div class="counter">
+        <span id="tokenCount">0</span> AI Coins Minted
+      </div>
+    </section>
+  </main>
 
-.navbar nav a:hover {
-  color: #ffd25e;
-}
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Disclosures</a>
+    </div>
+    <p>© 2025 CapitalFlowAI · Sovereign Intelligence in Motion</p>
+  </footer>
 
-/* Hero */
-.hero {
-  background: linear-gradient(to right, #0b0f14, #1c1c1c);
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
-.hero-content h1 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  color: #f5c144;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-.mint-button {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #f5c144;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.mint-button:hover {
-  background-color: #ffdb5e;
-  transform: scale(1.05);
-}
-
-/* Features */
-.features {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 4rem 2rem;
-  background-color: #111;
-}
-
-.feature-card {
-  flex: 1 1 300px;
-  margin: 1rem;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  border-left: 4px solid #f5c144;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.feature-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Insights */
-.insights {
-  background-color: #0d0d0d;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.insights h2 {
-  font-size: 2rem;
-  color: #f5c144;
-  margin-bottom: 2rem;
-}
-
-.insight-card {
-  background-color: #1a1a1a;
-  margin: 1rem auto;
-  padding: 1.5rem;
-  max-width: 600px;
-  border-left: 4px solid #f5c144;
-  font-style: italic;
-  color: #ccc;
-}
-
-/* Mint Section */
-.mint-section {
-  text-align: center;
-  padding: 4rem 2rem;
-  background-color: #0e0e0e;
-}
-
-#mintBtn {
-  background-color: #f5c144;
-  border: none;
-  color: #000;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-#mintBtn:hover {
-  background-color: #ffd25e;
-}
-
-.mint-result {
-  margin-top: 1.5rem;
-  font-style: italic;
-  color: #b3b3b3;
-}
-
-.counter {
-  margin-top: 2rem;
-  font-size: 1.2rem;
-  color: #f5c144;
-}
-
-/* Footer */
-footer {
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  background-color: #000;
-  color: #888;
-}
+  <script src="js/main.js"></script>
+</body>
+</html>
 
