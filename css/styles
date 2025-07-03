@@ -1,4 +1,4 @@
-/* === Typography & Base === */
+/* Typography & Base */
 body {
   margin: 0;
   font-family: 'Georgia', 'Helvetica Neue', sans-serif;
@@ -12,7 +12,7 @@ a {
   color: inherit;
 }
 
-/* === Navbar === */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@ a {
   color: #ffd25e;
 }
 
-/* === Hero Section === */
+/* Hero */
 .hero {
   background: linear-gradient(to right, #0b0f14, #1c1c1c);
   padding: 6rem 2rem;
@@ -80,7 +80,7 @@ a {
   transform: scale(1.05);
 }
 
-/* === Features Grid === */
+/* Features */
 .features {
   display: flex;
   justify-content: space-around;
@@ -105,7 +105,7 @@ a {
   transform: translateY(0);
 }
 
-/* === Insights Section === */
+/* Insights */
 .insights {
   background-color: #0d0d0d;
   padding: 4rem 2rem;
@@ -128,7 +128,7 @@ a {
   color: #ccc;
 }
 
-/* === Mint Section === */
+/* Mint Section */
 .mint-section {
   text-align: center;
   padding: 4rem 2rem;
@@ -164,7 +164,7 @@ a {
   color: #f5c144;
 }
 
-/* === Footer === */
+/* Footer */
 footer {
   padding: 2rem;
   text-align: center;
