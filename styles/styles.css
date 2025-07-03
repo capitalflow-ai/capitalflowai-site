@@ -1,283 +1,58 @@
-/* === Base Reset & Layout === */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 body {
-  background-color: #0b0b0f;
-  color: #ffffff;
-  font-family: 'Inter', 'Georgia', serif;
-  line-height: 1.6;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #121212, #2a2a2a);
+  color: #e6e6e6;
+}
+
+header {
   text-align: center;
-  scroll-behavior: smooth;
-  padding: 0 1.5rem;
+  padding: 2rem;
+  background-color: #000;
+  color: #f9d342;
+  border-bottom: 2px solid #f9d342;
 }
 
-/* === Typography === */
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
-}
-h1 {
-  font-size: 2.75rem;
-  margin-bottom: 0.25em;
-}
-p.subtitle {
-  font-size: 1.15rem;
-  color: #cccccc;
-  margin-bottom: 1.5rem;
-}
-blockquote {
-  font-style: italic;
-  border-left: 4px solid #3f3f3f;
-  padding-left: 1rem;
-  color: #999;
-  margin: 3rem 0;
-}
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-code {
-  background: #990000;
-  color: #fff;
-  padding: 0.5rem;
-  display: inline-block;
-  font-family: monospace;
-  border-radius: 4px;
+.mint-banner {
+  text-align: center;
+  padding: 3rem;
+  background-color: #1f1f1f;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
-/* === Vault Button === */
-#vault-call {
-  background-color: #b00000;
-  padding: 3vh 2vw;
+.mint-banner h2 {
+  color: #f2f2f2;
+  font-size: 2rem;
 }
-#vault-button {
-  background-color: #ffdddd;
-  color: #900;
+
+#mintButton {
+  background-color: #f9d342;
   border: none;
   padding: 1rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-#vault-button:hover {
-  background-color: #fff;
-  color: #700;
-}
-
-/* === Hero / Modules === */
-.hero {
-  text-align: center;
-  padding: 4rem 1rem 5rem;
-  background: radial-gradient(circle at center, #15151a, #0b0b0f);
-}
-.cta {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  color: #ffffff;
-  background: #22242f;
-  border: 1px solid #40444f;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-.cta:hover {
-  background: #2b2e3a;
-}
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin: 4rem 0;
-  opacity: 0;
-  animation: fadeIn 1.2s ease 0.5s forwards;
-}
-.module {
-  background: #15161c;
-  padding: 1.8rem;
-  border: 1px solid #2c2c33;
-  border-radius: 6px;
-  transition: transform 0.3s ease;
-}
-.module:hover {
-  transform: translateY(-5px);
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* === Symbol Sections === */
-#symbol-pair {
-  background-color: #cc0000;
-  padding: 5vh 2vw;
-}
-.symbol-header {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-}
-.symbol-container {
-  display: flex;
-  justify-content: center;
-  gap: 4vw;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.symbol-block {
-  text-align: center;
-}
-.symbol-img {
-  width: 80px;
-  max-width: 25vw;
-  opacity: 0.95;
-  transition: transform 0.3s ease;
-}
-.symbol-img:hover {
-  transform: scale(1.05);
-}
-.symbol-label {
-  font-size: 0.95rem;
   font-weight: bold;
-  color: #f7f7f7;
-  margin-top: 0.5rem;
-}
-.symbol-caption {
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 4px;
   margin-top: 1rem;
-  font-style: italic;
-  color: #eee;
+  transition: transform 0.2s ease;
 }
 
-/* === Mission Section === */
-#mission {
-  background-color: #d60000;
-  padding: 4vh 2vw;
-}
-#mission h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.mission-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
+#mintButton:hover {
+  transform: scale(1.05);
+  background-color: #ffd700;
 }
 
-/* === What We Do === */
-#what-we-do {
-  background-color: #c40000;
-  padding: 5vh 2vw;
-}
-#what-we-do h2 {
-  font-size: 1.7rem;
-  margin-bottom: 1rem;
-}
-#what-we-do ul li {
-  font-size: 1.05rem;
-  margin-bottom: 0.8rem;
-}
-.purpose-quote {
-  font-style: italic;
-  margin-top: 1rem;
-}
-
-/* === Earth Warning Section === */
-#earth-warning {
-  background-color: #990000;
-  padding: 5vh 2vw;
-}
-#earth-warning h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-#earth-warning ul li {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #f9f9f9;
-}
-.earth-quote {
-  font-style: italic;
-  margin-top: 1rem;
-  color: #f0f0f0;
-}
-
-/* === Animals Section === */
-#animals-fade {
-  background-color: #b30000;
-  padding: 4vh 2vw;
-}
-.animal-row {
+.features {
   display: flex;
-  justify-content: center;
-  gap: 5vw;
-  flex-wrap: wrap;
-  font-size: 1rem;
-  margin-top: 1rem;
-}
-.animal-quote {
-  font-style: italic;
-  margin-top: 1rem;
-  color: #eee;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
 }
 
-/* === Quote Wall === */
-#quote-wall {
-  background-color: #a00000;
-  padding: 4vh 2vw;
-}
-#quote-wall h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-#quote-wall blockquote {
-  font-style: italic;
-  margin: 0.8rem auto;
-  color: #f5f5f5;
+.feature {
+  margin: 1rem;
+  max-width: 600px;
+  text-align: center;
 }
 
-/* === Beacon Section === */
-#embed {
-  background-color: #880000;
-  padding: 4vh 2vw;
-  margin: 4vh auto;
-  max-width: 800px;
-  border-radius: 10px;
-}
-#embed h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-#embed code {
-  margin-top: 0.5rem;
-  display: block;
-  word-break: break-word;
-}
-
-/* === Footer === */
-footer {
-  background-color: #700000;
-  padding: 2rem 1rem;
-  font-size: 0.9rem;
-  color: #f0f0f0;
-  border-top: 1px solid #1a1a1a;
-  margin-top: 6rem;
-}
-.footer-text {
-  margin: 0.5rem 0;
-  font-style: italic;
-  color: #ddd;
-}
-
-/* === Responsive === */
-@media (max-width: 480px) {
-  h1 {
-    font-size: 2rem;
-  }
-  .cta {
-    padding: 0.7rem 1.2rem;
-  }
-}
