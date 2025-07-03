@@ -1,8 +1,9 @@
 let tokenCount = 0;
+let distortionIndex = 0;
+
 const tokenDisplay = document.getElementById('tokenCount');
 const mintResult = document.getElementById('mintResult');
 const mintBtn = document.getElementById('mintBtn');
-let distortionIndex = 0;
 
 mintBtn.addEventListener('click', () => {
   tokenCount++;
