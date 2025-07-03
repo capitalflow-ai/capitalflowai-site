@@ -12,7 +12,7 @@ let distortionIndex = 0;
 // Mint Button Logic
 mintBtn.addEventListener('click', () => {
   tokenCount++;
-  distortionIndex += Math.floor(Math.random() * 5) + 1; // Simulate distortion absorption
+  distortionIndex += Math.floor(Math.random() * 5) + 1;
   tokenDisplay.textContent = tokenCount.toLocaleString();
   const timestamp = new Date().toLocaleTimeString();
   mintResult.textContent = `✅ AI Coin minted at ${timestamp}. Distortion absorbed: ${distortionIndex}.`;
@@ -33,14 +33,4 @@ const revealOnScroll = () => {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
-
-// Optional: Countdown Timer (future use)
-// const countdownTarget = new Date("2025-12-31T23:59:59").getTime();
-// setInterval(() => {
-//   const now = new Date().getTime();
-//   const distance = countdownTarget - now;
-//   if (distance < 0) return;
-//   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-//   document.getElementById('countdown').textContent = `${days} days left to mint.`;
-// }, 1000);
 
