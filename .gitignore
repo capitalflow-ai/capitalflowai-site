@@ -1,9 +1,0 @@
-# Ignore system files
-.DS_Store
-Thumbs.db
-
-# Node/npm (if extended later)
-node_modules/
-package-lock.json
-dist/
-
