@@ -1,9 +1,10 @@
-/* Fonts & Palette */
+/* Typography & Base */
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', serif;
+  font-family: 'Georgia', 'Helvetica Neue', sans-serif;
   background-color: #0a0a0a;
   color: #e0e0e0;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -20,109 +21,17 @@ a {
   padding: 1.2rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 4px #111;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(255, 215, 0, 0.1);
 }
 
 .logo {
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #f5c144;
+  font-family: 'Georgia', serif;
 }
 
-.cta {
-  color: #f5c144;
-  font-weight: bold;
-  border: 2px solid #f5c144;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-}
-
-/* Hero */
-.hero {
-  text-align: center;
-  padding: 6rem 2rem;
-  background: linear-gradient(to right, #0b0f14, #1c1c1c);
-}
-
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #f5c144;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-.mint-button {
-  margin-top: 2rem;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #f5c144;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.mint-button:hover {
-  background-color: #ffdb5e;
-}
-
-/* Features */
-.features {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 4rem 2rem;
-  background-color: #111;
-}
-
-.feature-card {
-  flex: 1 1 300px;
-  margin: 1rem;
-  padding: 2rem;
-  background-color: #1a1a1a;
-  border-left: 4px solid #f5c144;
-}
-
-/* Mint Section */
-.mint-section {
-  text-align: center;
-  padding: 4rem 2rem;
-  background-color: #0e0e0e;
-}
-
-#mintBtn {
-  background-color: #f5c144;
-  border: none;
-  color: #000;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-top: 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-#mintBtn:hover {
-  background-color: #ffd25e;
-}
-
-.mint-result {
-  margin-top: 1.5rem;
-  font-style: italic;
-  color: #b3b3b3;
-}
-
-/* Footer */
-footer {
-  padding: 2rem;
-  text-align: center;
-  font-size: 0.9rem;
-  background-color: #000;
-  color: #888;
-}
-
+.navbar nav a {
+  margin-left: 1.5rem;
+  font
