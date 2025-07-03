@@ -18,19 +18,3 @@ mintBtn.addEventListener('click', () => {
   mintResult.textContent = `✅ AI Coin minted at ${timestamp}. Distortion absorbed: ${distortionIndex}.`;
 });
 
-// Scroll Reveal Animation
-const revealElements = document.querySelectorAll('.feature-card, .mint-section');
-
-const revealOnScroll = () => {
-  const triggerBottom = window.innerHeight * 0.85;
-  revealElements.forEach(el => {
-    const boxTop = el.getBoundingClientRect().top;
-    if (boxTop < triggerBottom) {
-      el.classList.add('visible');
-    }
-  });
-};
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-
