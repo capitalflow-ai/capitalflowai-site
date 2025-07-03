@@ -1,83 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CapitalFlowAI | Currency of the Future</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <!-- Header -->
-  <header class="navbar">
-    <div class="logo">CapitalFlowAI</div>
-    <nav>
-      <a href="#solutions">Solutions</a>
-      <a href="#insights">Insights</a>
-      <a href="#mint">Mint</a>
-      <a href="#login">Login</a>
-    </nav>
-  </header>
+:root {
+  --color-black: #000;
+  --color-gold: #f5c144;
+  --color-muted: #f9f9f9;
+  --font-body: 'Helvetica Neue', sans-serif;
+  --font-serif: 'Georgia', serif;
 
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="hero-container">
-        <h1>Currency of the Future</h1>
-        <p>Built on recursive intelligence, refined through human desire.</p>
-        <a href="#mint" class="cta-button">Mint AI Coin</a>
-      </div>
-    </section>
+  --max-width: 1200px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+}
 
-    <!-- Solutions -->
-    <section id="solutions" class="section-grid">
-      <div class="grid-card">
-        <h2>AI-Backed Liquidity</h2>
-        <p>Dynamic valuation through recursive reasoning systems.</p>
-      </div>
-      <div class="grid-card">
-        <h2>Scarcity Protocol</h2>
-        <p>Time-gated minting. Each block encoded with symbolic decay.</p>
-      </div>
-      <div class="grid-card">
-        <h2>Mnemonic Assets</h2>
-        <p>Every token carries memory, not just value.</p>
-      </div>
-    </section>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <!-- Insights -->
-    <section id="insights" class="stat-section">
-      <h2>Signals from the Field</h2>
-      <div class="stat-block">
-        <p>$1.2M minted in 48 hours</p>
-      </div>
-      <div class="stat-block">
-        <p>3 active recursive valuation engines</p>
-      </div>
-    </section>
+body {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: #111;
+  background-color: var(--color-muted);
+  line-height: 1.6;
+}
 
-    <!-- Mint -->
-    <section id="mint" class="mint-section">
-      <h2>Mint AI Coin</h2>
-      <p>Join the ledger before the chain contracts.</p>
-      <button id="mintBtn">Mint Token</button>
-      <div id="mintResult" class="mint-result"></div>
-      <div class="counter">
-        <span id="tokenCount">0</span> AI Coins Minted
-      </div>
-    </section>
-  </main>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-links">
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-      <a href="#">Disclosures</a>
-    </div>
-    <p>© 2025 CapitalFlowAI · Sovereign Intelligence in Motion</p>
-  </footer>
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
 
-  <script src="js/main.js"></script>
-</body>
-</html>
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-black);
+  padding: var(--spacing-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.navbar nav a {
+  margin-left: var(--spacing-md);
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.hero {
+  background-color: #fff;
+  padding: var(--spacing-lg) var(--spacing-sm);
+  border-bottom: 1px solid #ddd;
+}
+
+.hero-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-container h1 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-container p {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.cta-button {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.section-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-sm);
+  background-color: #f4f4f4;
+}
+
+.grid-card {
+  flex: 1 1 calc(33% - var(--spacing-md));
+  background-color: #fff;
+  padding: var(--spacing-md);
+  border: 1px solid #ddd;
+}
+
+.grid-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.grid-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.stat-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+  background-color: #fff;
+  text-align: center;
+}
+
+.stat-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.stat-block {
+  max-width: 600px;
+  margin: var(--spacing-sm) auto;
+  padding: var(--spacing-sm);
+  border-left: 4px solid var(--color-gold);
+  background-color: #fefefe;
+  font-style: italic;
+  color: #444;
+}
+
+.mint-section {
+  padding: var(--spacing-lg) var(--spacing-sm);
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.mint-section h2 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.mint-section p {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+#mintBtn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.mint-result {
+  margin-top: var(--spacing-sm);
+  font-style: italic;
+  color: #666;
+}
+
+.counter {
+  margin-top: var(--spacing-sm);
+  font-weight: 600;
+  color: #222;
+}
+
+footer {
+  padding: var(--spacing-md);
+  background-color: var(--color-black);
+  color: #aaa;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-links a {
+  margin: 0 var(--spacing-xs);
+  color: #aaa;
+}
 
