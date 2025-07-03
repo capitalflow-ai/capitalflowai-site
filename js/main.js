@@ -1,15 +1,9 @@
-// === CapitalFlowAI Ritual Engine ===
-
-// Token Counter
 let tokenCount = 0;
 const tokenDisplay = document.getElementById('tokenCount');
 const mintResult = document.getElementById('mintResult');
 const mintBtn = document.getElementById('mintBtn');
-
-// Distortion Index (symbolic placeholder)
 let distortionIndex = 0;
 
-// Mint Button Logic
 mintBtn.addEventListener('click', () => {
   tokenCount++;
   distortionIndex += Math.floor(Math.random() * 5) + 1;
