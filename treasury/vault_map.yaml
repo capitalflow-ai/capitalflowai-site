@@ -1,9 +1,0 @@
-distribution:
-  earth_vault: 30
-  hunger_vault: 30
-  animal_vault: 30
-  system_vault: 10
-policy:
-  hard_cap: 50000000
-  default_penalty: "resonance_reduction"
-
