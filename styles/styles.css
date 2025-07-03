@@ -1,58 +1,128 @@
+/* Fonts & Palette */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #121212, #2a2a2a);
-  color: #e6e6e6;
+  font-family: 'Helvetica Neue', serif;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
 }
 
-header {
-  text-align: center;
-  padding: 2rem;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #000;
-  color: #f9d342;
-  border-bottom: 2px solid #f9d342;
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px #111;
 }
 
-.mint-banner {
-  text-align: center;
-  padding: 3rem;
-  background-color: #1f1f1f;
-  border-top: 1px solid #333;
-  border-bottom: 1px solid #333;
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #f5c144;
 }
 
-.mint-banner h2 {
-  color: #f2f2f2;
-  font-size: 2rem;
-}
-
-#mintButton {
-  background-color: #f9d342;
-  border: none;
-  padding: 1rem 2rem;
+.cta {
+  color: #f5c144;
   font-weight: bold;
+  border: 2px solid #f5c144;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(to right, #0b0f14, #1c1c1c);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #f5c144;
+}
+
+.hero p {
   font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.mint-button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #f5c144;
+  color: #000;
+  border: none;
   cursor: pointer;
   border-radius: 4px;
-  margin-top: 1rem;
-  transition: transform 0.2s ease;
 }
 
-#mintButton:hover {
-  transform: scale(1.05);
-  background-color: #ffd700;
+.mint-button:hover {
+  background-color: #ffdb5e;
 }
 
+/* Features */
 .features {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  background-color: #111;
 }
 
-.feature {
+.feature-card {
+  flex: 1 1 300px;
   margin: 1rem;
-  max-width: 600px;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-left: 4px solid #f5c144;
+}
+
+/* Mint Section */
+.mint-section {
   text-align: center;
+  padding: 4rem 2rem;
+  background-color: #0e0e0e;
+}
+
+#mintBtn {
+  background-color: #f5c144;
+  border: none;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#mintBtn:hover {
+  background-color: #ffd25e;
+}
+
+.mint-result {
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: #b3b3b3;
+}
+
+/* Footer */
+footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  background-color: #000;
+  color: #888;
 }
 
