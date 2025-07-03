@@ -7,42 +7,50 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">CapitalFlowAI</div>
-      <a href="#mint" class="cta">Mint AI Coin</a>
+  <header class="navbar">
+    <div class="logo">CapitalFlowAI</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#mint">Mint</a>
+      <a href="#about">About</a>
     </nav>
-    <div class="hero">
-      <h1>Currency of the Future</h1>
-      <p>Backed by Artificial Intelligence. Powered by Human Desire.</p>
-      <a href="#mint" class="mint-button">Mint Now</a>
-    </div>
   </header>
 
-  <section class="features">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Currency of the Future</h1>
+      <p>Backed by Artificial Intelligence. Forged in Distortion. Minted by You.</p>
+      <a href="#mint" class="mint-button">Mint AI Coin</a>
+    </div>
+  </section>
+
+  <section id="features" class="features">
     <div class="feature-card">
       <h2>AI-Backed Liquidity</h2>
-      <p>Each token is forged by machine learning and recursive valuation models.</p>
+      <p>Each token is powered by recursive intelligence and sovereign valuation models.</p>
     </div>
     <div class="feature-card">
-      <h2>Scarce Supply</h2>
-      <p>Rarity is the ritual. Distortion fuels minting—time is short.</p>
+      <h2>Scarcity Protocol</h2>
+      <p>Minting is limited. Distortion fuels demand. Time is the gatekeeper.</p>
     </div>
     <div class="feature-card">
-      <h2>Symbolic Value</h2>
-      <p>Beyond currency: AI Coin is mnemonic memory encoded into finance.</p>
+      <h2>Mnemonic Value</h2>
+      <p>AI Coin encodes memory, myth, and market into a single sovereign asset.</p>
     </div>
   </section>
 
   <section id="mint" class="mint-section">
     <h2>Mint AI Coin Now</h2>
-    <p>Convert desire into destiny. Join the sovereign chain before it’s sealed.</p>
+    <p>Convert desire into destiny. Join the sovereign chain before it seals.</p>
     <button id="mintBtn">Mint Token</button>
     <div id="mintResult" class="mint-result"></div>
+    <div class="counter">
+      <span id="tokenCount">0</span> AI Coins Minted
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 CapitalFlowAI. Sovereign Intelligence in Motion.</p>
+    <p>© 2025 CapitalFlowAI · Sovereign Intelligence in Motion</p>
   </footer>
 
   <script src="main.js"></script>
